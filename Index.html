@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Bala!</title>
+    <style>
+        /* Base Page Setup */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            background-color: #f7ebd9; /* Cream background matching the images */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Card Container (Wraps the whole design) */
+        .birthday-container {
+            width: 100%;
+            max-width: 600px;
+            background-image: url('gingham-bg.png'); /* Replace with your red gingham background */
+            background-size: cover;
+            background-position: center;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            padding: 15px;
+            overflow: hidden;
+        }
+
+        /* Inner Inner Frame (The Cream Star-Pattern Layer) */
+        .inner-frame {
+            background-color: #fcf6eb;
+            background-image: url('red-stars-bg.png'); /* Replace with your star pattern background */
+            background-size: contain;
+            border: 3px dashed #b83232;
+            border-radius: 12px;
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Header Text Styles */
+        h1 {
+            font-size: 3.5rem;
+            color: #5e1919;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 0px;
+        }
+
+        .subtitle {
+            font-style: italic;
+            font-size: 2.2rem;
+            color: #5e1919;
+            margin-bottom: 30px;
+        }
+
+        /* Decorative Grid Elements (Kitten, Envelope, Cake) */
+        .decorations-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .kitten-img {
+            width: 100%;
+            max-width: 130px;
+            justify-self: start;
+        }
+
+        .cake-img {
+            width: 100%;
+            max-width: 130px;
+            justify-self: end;
+        }
+
+        /* Interactive Click Me Button (Envelope style) */
+        .envelope-btn {
+            background: #fff5eb;
+            border: 2px solid #b83232;
+            border-radius: 10px;
+            padding: 15px 10px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(184, 50, 50, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .envelope-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(184, 50, 50, 0.2);
+        }
+
+        .envelope-btn span {
+            font-style: italic;
+            color: #5e1919;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        .heart-icon {
+            color: #b83232;
+            font-size: 1.5rem;
+            margin-top: 5px;
+        }
+
+        /* Hidden Letter Content Container */
+        .letter-content {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.6s ease-in-out;
+            background: #fff;
+            border-radius: 10px;
+            border: 1px solid #e0d0b8;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.05);
+        }
+
+        /* Active class triggered by JS */
+        .letter-content.open {
+            max-height: 1000px; /* Large enough to hold text */
+            opacity: 1;
+            padding: 25px 20px;
+            margin-top: 20px;
+        }
+
+        /* Letter Typography */
+        .letter-text {
+            color: #3d2424;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .letter-text strong {
+            color: #b83232;
+        }
+
+        .letter-footer {
+            border-top: 1px dashed #e0d0b8;
+            padding-top: 15px;
+            margin-top: 15px;
+        }
+
+        .signature {
+            font-size: 1.5rem;
+            color: #5e1919;
+            font-style: italic;
+            margin-bottom: 5px;
+        }
+
+        .emojis {
+            font-size: 1.3rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="birthday-container">
+        <div class="inner-frame">
+            
+            <h1>BALA</h1>
+            <div class="subtitle">day! 🪐 ✨</div>
+
+            <div class="decorations-grid">
+                <img src="birthday-kitten.png" alt="Birthday Kitten" class="kitten-img">
+                
+                <button class="envelope-btn" onclick="toggleLetter()">
+                    <span>Click me!</span>
+                    <div class="heart-icon">♥</div>
+                </button>
+                
+                <img src="birthday-cake.png" alt="Birthday Cake" class="cake-img">
+            </div>
+
+            <div class="letter-content" id="birthdayLetter">
+                <div class="letter-text">
+                    You are our <strong>brightest star</strong>, Bala!<br>
+                    truly the most beautiful soul we know.<br>
+                    The world feels infinitely kinder just because you’re in it.
+                </div>
+                <div class="letter-text">
+                    You deserve the entire universe and more.<br>
+                    May life bring you every ounce of happiness you deserve and bless you with nothing but the best.
+                </div>
+                <div class="letter-text">
+                    It’s your year... go shine like you always do! 🤍
+                </div>
+                
+                <div class="letter-footer">
+                    <div class="signature">Happy, happy birthday.</div>
+                    <div class="signature">Love you endlessly</div>
+                    <div class="emojis">🫶✨❤️🧿</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function toggleLetter() {
+            const letter = document.getElementById('birthdayLetter');
+            letter.classList.toggle('open');
+            
+            // Optional: Smooth scroll down to letter when opened on mobile viewports
+            if(letter.classList.contains('open')) {
+                setTimeout(() => {
+                    letter.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 200);
+            }
+        }
+    </script>
+</body>
+</html>
